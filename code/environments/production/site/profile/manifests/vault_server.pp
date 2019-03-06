@@ -57,7 +57,7 @@ class profile::vault_server {
         'tls_key_file'       => '/etc/vault/keys/vaultvm_key.pem'
       },
     },
-    version   => '0.11.5',
+    version   => '1.0.3',
     enable_ui => true,
   }
 
