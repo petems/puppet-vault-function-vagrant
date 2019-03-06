@@ -53,4 +53,19 @@ Vagrant.configure(2) do |config|
     end
   end
 
+  config.vm.define "node2", primary: true do |node2|
+    node2.vm.hostname = "node2.vm"
+    node2.vm.box = "geerlingguy/centos7"
+    node2.vm.box_version = "1.2.12"
+    node2.vm.network "private_network", ip: "10.13.38.5"
+
+    node2.vm.provision "shell", path: "install_puppet.sh"
+
+    # Run an agent run to check Puppetserver master is running ok
+    node2.vm.provision "puppet_server" do |puppet_server|
+      puppet_server.puppet_server = "puppet"
+      puppet_server.options = "--test"
+    end
+  end
+
 end

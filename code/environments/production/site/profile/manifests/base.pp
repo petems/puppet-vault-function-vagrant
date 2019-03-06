@@ -19,6 +19,10 @@ class profile::base {
     ip => '10.13.38.4',
   }
 
+  host { 'node2.vm':
+    ip => '10.13.38.5',
+  }
+
   package { 'puppet-agent':
     ensure => installed,
   }
